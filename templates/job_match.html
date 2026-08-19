@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Job Match | AI Resume Analyzer</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            AI <span>Resume Analyzer</span>
+        </div>
+
+        <a href="/" class="nav-link">Home</a>
+    </nav>
+
+    <main class="container">
+
+        <section class="page-header">
+
+            <div class="badge">
+                AI Job Matching
+            </div>
+
+            <h1>
+                Match Your Resume With a Job
+            </h1>
+
+            <p>
+                Paste a job description and let AI compare it
+                with your resume.
+            </p>
+
+        </section>
+
+        <section class="analysis-card">
+
+            <div class="section-title">
+                <h2>Job Description</h2>
+
+                <p>
+                    Paste the complete job description below.
+                </p>
+            </div>
+
+            <form action="/job-match" method="POST">
+
+                <textarea
+                    name="job_description"
+                    rows="14"
+                    placeholder="Paste the job description here..."
+                    required
+                ></textarea>
+
+                <button type="submit" class="primary-btn">
+                    Analyze Job Match
+                </button>
+
+            </form>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

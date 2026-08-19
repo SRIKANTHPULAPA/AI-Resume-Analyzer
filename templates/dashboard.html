@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Dashboard | AI Resume Analyzer</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            AI <span>Resume Analyzer</span>
+        </div>
+
+        <div class="nav-links">
+
+            <a href="/dashboard" class="nav-link">
+                Dashboard
+            </a>
+
+            <a href="/logout" class="nav-link">
+                Logout
+            </a>
+
+        </div>
+
+    </nav>
+
+
+    <main class="container">
+
+        <section class="page-header">
+
+            <div class="badge">
+                Career Dashboard
+            </div>
+
+            <h1>
+                Welcome, {{ user_name }} 👋
+            </h1>
+
+            <p>
+                Track your resume analysis, job matches
+                and career progress.
+            </p>
+
+        </section>
+
+
+        <!-- STAT CARDS -->
+
+        <div class="stats-grid">
+
+            <div class="stat-card">
+
+                <span>
+                    Latest ATS Score
+                </span>
+
+                <strong>
+
+                    {% if latest_score is not none %}
+                        {{ latest_score }}/100
+                    {% else %}
+                        —
+                    {% endif %}
+
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>
+                    Resume Analyses
+                </span>
+
+                <strong>
+                    {{ resume_count }}
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>
+                    Job Matches
+                </span>
+
+                <strong>
+                    {{ job_match_count }}
+                </strong>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <span>
+                    Career Questions
+                </span>
+
+                <strong>
+                    {{ career_chat_count }}
+                </strong>
+
+            </div>
+
+        </div>
+
+        <section class="history-section">
+
+    <h2>Resume History</h2>
+
+    {% if resume_history %}
+
+        {% for resume in resume_history %}
+
+        <div class="history-card">
+
+            <div>
+                <strong>
+                    {{ resume.filename }}
+                </strong>
+
+                <p>
+                    ATS Score:
+                    <strong>
+                        {{ resume.ats_score }}/100
+                    </strong>
+                </p>
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>No resume analysis history yet.</p>
+
+    {% endif %}
+
+</section>
+
+
+<section class="history-section">
+
+    <h2>Job Match History</h2>
+
+    {% if job_history %}
+
+        {% for job in job_history %}
+
+        <div class="history-card">
+
+            <div>
+                <strong>
+                    Job Match
+                </strong>
+
+                <p>
+                    Match Score:
+                    <strong>
+                        {{ job.match_score }}/100
+                    </strong>
+                </p>
+
+                <p>
+                    Matched Skills:
+                    {{ job.matched_skills | join(", ") }}
+                </p>
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    {% else %}
+
+        <p>No job match history yet.</p>
+
+    {% endif %}
+
+</section>
+
+
+        <!-- FEATURES -->
+
+        <div class="dashboard-grid">
+
+
+            <a href="/" class="dashboard-card">
+
+                <div class="dashboard-icon">
+                    📄
+                </div>
+
+                <h2>
+                    Resume Analyzer
+                </h2>
+
+                <p>
+                    Upload a resume and get your ATS
+                    score and AI analysis.
+                </p>
+
+                <span>
+                    Analyze Resume →
+                </span>
+
+            </a>
+
+
+            <a href="/job-match"
+               class="dashboard-card">
+
+                <div class="dashboard-icon">
+                    🎯
+                </div>
+
+                <h2>
+                    Job Match
+                </h2>
+
+                <p>
+                    Compare your resume with a job
+                    description and identify skill gaps.
+                </p>
+
+                <span>
+                    Match a Job →
+                </span>
+
+            </a>
+
+
+            <a href="/career-assistant"
+               class="dashboard-card">
+
+                <div class="dashboard-icon">
+                    🤖
+                </div>
+
+                <h2>
+                    Career Assistant
+                </h2>
+
+                <p>
+                    Ask AI personalized questions about
+                    your career and skills.
+                </p>
+
+                <span>
+                    Ask AI →
+                </span>
+
+            </a>
+
+
+        </div>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            AI Resume Analyzer & Career Assistant
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

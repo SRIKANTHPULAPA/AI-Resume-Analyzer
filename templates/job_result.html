@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Job Match Result</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            AI <span>Resume Analyzer</span>
+        </div>
+
+        <a href="/job-match" class="nav-link">
+            New Job Match
+        </a>
+
+    </nav>
+
+
+    <main class="container">
+
+        <section class="page-header">
+
+            <div class="badge">
+                AI Job Matching
+            </div>
+
+            <h1>
+                Your Job Match Result
+            </h1>
+
+            <p>
+                Your resume has been compared with the job description.
+            </p>
+
+        </section>
+
+
+        <!-- MATCH SCORE -->
+
+        <section class="score-card">
+
+            <div class="score-info">
+
+                <h2>
+                    Job Match Score
+                </h2>
+
+                <p>
+                    Based on skills and resume relevance.
+                </p>
+
+            </div>
+
+            <div class="score">
+
+                {{ match_score }}
+
+                <span>/100</span>
+
+            </div>
+
+        </section>
+
+
+        <!-- SKILLS -->
+
+        <div class="job-grid">
+
+            <section class="analysis-card">
+
+                <div class="section-title">
+
+                    <h2>
+                        Matched Skills
+                    </h2>
+
+                </div>
+
+                {% if matched_skills %}
+
+                    <div class="skill-list">
+
+                        {% for skill in matched_skills %}
+
+                            <span class="skill matched">
+                                {{ skill }}
+                            </span>
+
+                        {% endfor %}
+
+                    </div>
+
+                {% else %}
+
+                    <p>
+                        No matching technical skills found.
+                    </p>
+
+                {% endif %}
+
+            </section>
+
+
+            <section class="analysis-card">
+
+                <div class="section-title">
+
+                    <h2>
+                        Missing Skills
+                    </h2>
+
+                </div>
+
+                {% if missing_skills %}
+
+                    <div class="skill-list">
+
+                        {% for skill in missing_skills %}
+
+                            <span class="skill missing">
+                                {{ skill }}
+                            </span>
+
+                        {% endfor %}
+
+                    </div>
+
+                {% else %}
+
+                    <p>
+                        No major missing skills detected.
+                    </p>
+
+                {% endif %}
+
+            </section>
+
+        </div>
+
+
+        <!-- AI ANALYSIS -->
+
+        <section class="analysis-card">
+
+            <div class="section-title">
+
+                <h2>
+                    AI Career Analysis
+                </h2>
+
+                <p>
+                    Personalized explanation and recommendations.
+                </p>
+
+            </div>
+
+            <div class="analysis-text">
+                {{ result }}
+            </div>
+
+        </section>
+
+
+        <div class="actions">
+
+            <a href="/job-match" class="primary-btn">
+                Analyze Another Job
+            </a>
+
+        </div>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            AI Resume Analyzer & Career Assistant
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

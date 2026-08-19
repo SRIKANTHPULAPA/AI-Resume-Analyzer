@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Login | AI Resume Analyzer</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            AI <span>Resume Analyzer</span>
+        </div>
+
+        <a href="/" class="nav-link">Home</a>
+
+    </nav>
+
+
+    <main class="auth-container">
+
+        <div class="auth-card">
+
+            <div class="badge">
+                Welcome Back
+            </div>
+
+            <h1>
+                Login
+            </h1>
+
+            <p>
+                Login to access your career dashboard.
+            </p>
+
+
+            {% if error %}
+
+                <div class="error-message">
+                    {{ error }}
+                </div>
+
+            {% endif %}
+
+
+            <form action="/login"
+                  method="POST">
+
+                <label>
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+
+                <label>
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Enter your password"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                    class="primary-btn auth-btn">
+
+                    Login
+
+                </button>
+
+            </form>
+
+
+            <p class="auth-footer">
+                Don't have an account?
+                <a href="/signup">Create Account</a>
+            </p>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

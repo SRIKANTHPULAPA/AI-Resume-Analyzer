@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Sign Up | AI Resume Analyzer</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            AI <span>Resume Analyzer</span>
+        </div>
+
+        <a href="/" class="nav-link">Home</a>
+
+    </nav>
+
+
+    <main class="auth-container">
+
+        <div class="auth-card">
+
+            <div class="badge">
+                Create Account
+            </div>
+
+            <h1>
+                Create Your Account
+            </h1>
+
+            <p>
+                Save your resume analysis and career progress.
+            </p>
+
+
+            {% if error %}
+                <div class="error-message">
+                    {{ error }}
+                </div>
+            {% endif %}
+
+
+            <form action="/signup"
+                  method="POST">
+
+                <label>
+                    Full Name
+                </label>
+
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Enter your name"
+                    required
+                >
+
+
+                <label>
+                    Email
+                </label>
+
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Enter your email"
+                    required
+                >
+
+
+                <label>
+                    Password
+                </label>
+
+                <input
+                    type="password"
+                    name="password"
+                    placeholder="Create a password"
+                    required
+                >
+
+
+                <button
+                    type="submit"
+                    class="primary-btn auth-btn">
+
+                    Create Account
+
+                </button>
+
+            </form>
+
+
+            <p class="auth-footer">
+                Already have an account?
+                <a href="/login">Login</a>
+            </p>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

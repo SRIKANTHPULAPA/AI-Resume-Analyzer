@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Resume Analyzer</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+   <nav class="navbar">
+
+    <div class="logo">
+        AI <span>Resume Analyzer</span>
+    </div>
+
+    <div class="nav-links">
+
+        <a href="/" class="nav-link">
+            Home
+        </a>
+
+        {% if session.get("user_id") %}
+
+            <a href="/dashboard" class="nav-link">
+                Dashboard
+            </a>
+
+            <a href="/job-match" class="nav-link">
+                Job Match
+            </a>
+
+            <a href="/career-assistant" class="nav-link">
+                Career Assistant
+            </a>
+
+            <a href="/logout" class="secondary-btn">
+                Logout
+            </a>
+
+        {% else %}
+
+            <a href="/login" class="nav-link">
+                Login
+            </a>
+
+            <a href="/signup" class="secondary-btn">
+                Sign Up
+            </a>
+
+        {% endif %}
+
+    </div>
+
+</nav>
+
+
+    <!-- HERO -->
+
+    <section class="hero">
+
+        <div class="hero-content">
+
+            <div class="badge">
+                AI-Powered Career Assistant
+            </div>
+
+            <h1>
+                Build a Resume That
+                <span>Gets Noticed</span>
+            </h1>
+
+            <p>
+                Analyze your resume, get a reliable ATS score,
+                discover missing skills, and check how well
+                your resume matches a job.
+            </p>
+
+
+            <!-- RESUME UPLOAD -->
+
+            <form action="/upload"
+                  method="POST"
+                  enctype="multipart/form-data"
+                  class="upload-form">
+
+                <input
+                    type="file"
+                    name="resume"
+                    accept=".pdf"
+                    required
+                >
+
+                <button type="submit" class="primary-btn">
+                    Analyze My Resume
+                </button>
+
+            </form>
+
+
+            <!-- JOB MATCH -->
+
+            <a href="/job-match"
+               class="secondary-btn">
+
+                Check Job Match
+
+            </a>
+
+            <a href="/career-assistant"
+   class="secondary-btn">
+
+    Career Assistant
+
+</a>
+
+        </div>
+
+    </section>
+
+
+    <!-- FEATURES -->
+
+    <section class="features">
+
+        <h2>
+            Everything You Need
+        </h2>
+
+
+        <div class="cards">
+
+
+            <div class="card">
+
+                <h3>
+                    Resume Analysis
+                </h3>
+
+                <p>
+                    Upload your resume and get AI-powered
+                    insights about your skills, projects,
+                    strengths and weaknesses.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    ATS Score
+                </h3>
+
+                <p>
+                    Get a consistent ATS score based on
+                    resume structure, skills, projects,
+                    education and content quality.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Job Matching
+                </h3>
+
+                <p>
+                    Compare your resume with a job description
+                    and identify matched and missing skills.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>
+            AI Resume Analyzer & Career Assistant
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

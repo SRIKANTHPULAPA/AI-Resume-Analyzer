@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Career Assistant</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            AI <span>Resume Analyzer</span>
+        </div>
+
+        <a href="/" class="nav-link">
+            Home
+        </a>
+
+    </nav>
+
+
+    <main class="container">
+
+        <section class="page-header">
+
+            <div class="badge">
+                AI Career Assistant
+            </div>
+
+            <h1>
+                Ask Your Career Assistant
+            </h1>
+
+            <p>
+                Ask questions about your resume,
+                skills, career and job preparation.
+            </p>
+
+        </section>
+
+
+        <section class="analysis-card">
+
+            <div class="section-title">
+
+                <h2>
+                    Your Question
+                </h2>
+
+            </div>
+
+
+            <form action="/career-assistant"
+                  method="POST">
+
+                <textarea
+                    name="question"
+                    rows="6"
+                    placeholder="Example: What skills should I learn to become a Python Developer?"
+                    required></textarea>
+
+                <button
+                    type="submit"
+                    class="primary-btn">
+
+                    Ask AI Assistant
+
+                </button>
+
+            </form>
+
+        </section>
+
+
+        {% if answer %}
+
+        <section class="analysis-card">
+
+            <div class="section-title">
+
+                <h2>
+                    AI Career Advice
+                </h2>
+
+            </div>
+
+            <div class="analysis-text">
+                {{ answer }}
+            </div>
+
+        </section>
+
+        {% endif %}
+
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            AI Resume Analyzer & Career Assistant
+        </p>
+
+    </footer>
+
+</body>
+
+</html>
